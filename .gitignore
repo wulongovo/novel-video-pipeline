@@ -1,0 +1,11 @@
+__pycache__/
+venv/
+*.pyc
+data/audio/*.mp3
+data/images/*.png
+data/videos/*.mp4
+data/stories/*.txt
+data/subtitles/*.srt
+.env
+cookies/
+node_modules/
