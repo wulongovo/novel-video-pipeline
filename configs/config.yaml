@@ -1,0 +1,57 @@
+# 小说视频自动化管道配置
+
+# AI小说生成
+novel:
+  # 使用Ollama本地模型
+  api_base: "http://localhost:11434/v1"
+  model: "qwen35-heretic"
+  # 生成参数
+  temperature: 0.85
+  max_tokens: 4000
+  # 故事风格
+  genre: "末世爽文"
+  target_words: 3000  # 每章约3000字
+  chapter_count: 1    # 每次生成章节数
+
+# 语音合成
+tts:
+  voice: "zh-CN-YunxiNeural"     # 男声，低沉，适合末世题材
+  rate: "-10%"                    # 语速略慢，适合哄睡
+  volume: "+0%"
+  pitch: "-5Hz"                   # 略低沉
+  # 可选声音:
+  # zh-CN-YunxiNeural   (男声，沉稳)
+  # zh-CN-YunjianNeural (男声，磁性)
+  # zh-CN-XiaoxiaoNeural (女声)
+
+# 视频合成
+video:
+  ffmpeg_path: "E:/ffmpeg/ffmpeg.exe"
+  resolution: "1080x1920"        # 竖屏，抖音标准
+  fps: 30
+  background_color: "#0a0a0a"    # 深黑背景
+  # 字幕样式
+  subtitle:
+    font_size: 42
+    font_color: "white"
+    outline_color: "black"
+    outline_width: 2
+    position: "bottom"            # bottom / center
+    margin_bottom: 200
+  # 每张背景图显示时长(秒)
+  image_duration: 15
+  # 目标视频时长(分钟)
+  target_duration: 15
+
+# 发布
+publish:
+  auto: false                     # 改为true开启自动发布
+  platforms:
+    - name: "douyin"
+      enabled: true
+      tags: ["末世", "爽文", "小说", "哄睡", "助眠", "夜间", "有声书"]
+    - name: "bilibili"
+      enabled: true
+      tags: ["末世小说", "AI小说", "助眠", "有声书", "爽文"]
+  interval_hours: 24              # 发布间隔
+  cookie_dir: "./cookies"
